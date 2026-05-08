@@ -76,7 +76,7 @@
   "pk": 1,
   "fields": {
     "title": "Chatbot Project",
-    "short_description": "A portfolio chatbot built with Chatbase that answers questions about Samantha's projects, experience, and background on behalf of potential employers and collaborators.",
+    "short_description": "A portfolio chatbot built with Chatbase that answers questions about my portfolio on behalf of potential employers and collaborators.",
     "description": "One-Sentence Summary:\nAI chatbot using Chatbase.co to answer basic class questions by referencing course syllabi and course timelines.\n\nBusiness Problem:\nStudents often spend extra time searching through syllabi, timelines, and course documents to find simple answers about assignments, deadlines, policies, or class expectations. This chatbot helps make that process faster by giving students a quick place to ask course-related questions.\n\nTools Used:\nChatbase, AI chatbot builder, uploaded syllabus/course timeline files, prompt engineering, role instructions, chatbot guardrails\n\nKey Features:\nAnswers basic questions about classes using uploaded course materials\nUses a casual, college-student-friendly tone\nGives simple and direct answers unless more detail is needed\nAsks clarifying questions when the user's question is unclear\nUses guardrails to avoid making up answers\nRedirects users back to course-related topics if they ask unrelated questions\n\nMy Role / Contribution:\nI designed the purpose of the chatbot, identified the course documents needed for training, uploaded syllabus and timeline materials, customized the chatbot's role, adjusted its tone, set guardrails, and tested the chatbot to make sure it answered questions clearly and accurately.\n\nBiggest Challenge:\nThe biggest challenge was making sure the chatbot only answered based on the information provided in the syllabus or course timeline. I had to think carefully about the chatbot's guardrails so it would not make up answers when the information was not available.\n\nWhat You Learned:\nI learned how to build and train an AI chatbot using uploaded files, how role instructions affect the chatbot's tone, and how constraints help keep the chatbot focused and accurate. I also learned that a chatbot is more useful when it has clear training materials, a specific purpose, and strong guardrails.\n\nDemo Link: Not publicly available",
     "category": "AI / NLP",
     "technologies": "Chatbase, Prompt Engineering, Knowledge Base Documents, System Instructions, Django",
@@ -91,7 +91,7 @@
     "github_url": "",
     "live_url": "",
     "created_at": "2026-05-06T02:11:33.889Z",
-    "updated_at": "2026-05-08T16:54:22.961Z",
+    "updated_at": "2026-05-08T17:00:37.894Z",
     "order": 100
   }
 },
