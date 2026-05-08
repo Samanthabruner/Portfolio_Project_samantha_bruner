@@ -12,7 +12,7 @@ def _attach_technology_lists(projects):
 
 def home(request):
     featured_projects = _attach_technology_lists(Project.objects.all())
-    skills = Skill.objects.all()[:6]
+    skills = Skill.objects.all()[:8]
     context = {
         'featured_projects': featured_projects,
         'skills': skills,

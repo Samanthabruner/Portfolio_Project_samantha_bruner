@@ -38,11 +38,12 @@
 <section class="featured-skills">
     <div class="container">
         <h2>Key Skills</h2>
-        <div class="skills-grid">
+        <div class="row row-cols-2 row-cols-md-4 g-3">
             {% for skill in skills %}
-            <div class="skill-item">
-                <h4>{{ skill.name }}</h4>
-                <p class="skill-level">{{ skill.get_level_display }}</p>
+            <div class="col">
+                <div class="skill-item text-center">
+                    <h4>{{ skill.name }}</h4>
+                </div>
             </div>
             {% endfor %}
         </div>

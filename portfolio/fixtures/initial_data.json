@@ -12,7 +12,7 @@
   "model": "portfolio.skill",
   "pk": 3,
   "fields": {
-    "name": "Excel & Data Analysis",
+    "name": "Excel and Data Analysis",
     "level": "Advanced",
     "category": "Data Management"
   }
@@ -30,7 +30,7 @@
   "model": "portfolio.skill",
   "pk": 5,
   "fields": {
-    "name": "Team Leadership",
+    "name": "Leadership",
     "level": "Advanced",
     "category": "Leadership"
   }
@@ -41,33 +41,6 @@
   "fields": {
     "name": "Financial Management",
     "level": "Expert",
-    "category": "Leadership"
-  }
-},
-{
-  "model": "portfolio.skill",
-  "pk": 7,
-  "fields": {
-    "name": "Customer Service",
-    "level": "Expert",
-    "category": "Soft Skills"
-  }
-},
-{
-  "model": "portfolio.skill",
-  "pk": 8,
-  "fields": {
-    "name": "Business Communication",
-    "level": "Advanced",
-    "category": "Soft Skills"
-  }
-},
-{
-  "model": "portfolio.skill",
-  "pk": 9,
-  "fields": {
-    "name": "Project Management",
-    "level": "Advanced",
     "category": "Leadership"
   }
 },
@@ -87,6 +60,15 @@
     "name": "Content Planning",
     "level": "Advanced",
     "category": "Digital Marketing"
+  }
+},
+{
+  "model": "portfolio.skill",
+  "pk": 12,
+  "fields": {
+    "name": "Property and Casualty Insurance",
+    "level": "Advanced",
+    "category": "Insurance"
   }
 },
 {
