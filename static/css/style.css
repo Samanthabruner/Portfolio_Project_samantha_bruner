@@ -277,6 +277,10 @@ a:hover {
     background-color: var(--light-color);
     border-radius: 0.375rem;
     text-align: center;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .skill-item h4 {
