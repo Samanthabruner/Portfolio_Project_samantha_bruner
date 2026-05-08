@@ -62,7 +62,7 @@
             {% endif %}
 
             <!-- 3. Screenshots & Visuals -->
-            {% if project.image or project.static_image or project.title == "n8n Agent Workflow Project" or project.title == "LangChain Agent Project" or project.title == "Google AI Studio Media Project" or project.title == "Machine Learning Project (scikit-learn)" %}
+            {% if project.image or project.static_image or project.title == "Chatbot Project" or project.title == "n8n Agent Workflow Project" or project.title == "LangChain Agent Project" or project.title == "Google AI Studio Media Project" or project.title == "Machine Learning Project (scikit-learn)" %}
             <div class="detail-section">
                 <span class="detail-label">Screenshots &amp; Visuals</span>
 
@@ -73,7 +73,20 @@
                 </div>
                 {% endif %}
 
-                {% if project.static_image %}
+                {% if project.title == "Chatbot Project" %}
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <img src="{% static 'images/topofchat.png' %}" alt="Internship Question"
+                             class="img-fluid" style="width:100%; border:1px solid #e4e4e4; border-radius:6px;">
+                        <p class="ml-grid-label">Internship Question</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{% static 'images/bottom_of_chat.png' %}" alt="Contact Question"
+                             class="img-fluid" style="width:100%; border:1px solid #e4e4e4; border-radius:6px;">
+                        <p class="ml-grid-label">Contact Question</p>
+                    </div>
+                </div>
+                {% elif project.static_image %}
                 <div class="visual-block text-center">
                     <img src="{% static project.static_image %}"
                          alt="{{ project.screenshot_caption|default:project.title }}"
