@@ -1,0 +1,236 @@
+[
+{
+  "model": "portfolio.skill",
+  "pk": 2,
+  "fields": {
+    "name": "Social Media Marketing",
+    "level": "Advanced",
+    "category": "Digital Marketing"
+  }
+},
+{
+  "model": "portfolio.skill",
+  "pk": 3,
+  "fields": {
+    "name": "Excel & Data Analysis",
+    "level": "Advanced",
+    "category": "Data Management"
+  }
+},
+{
+  "model": "portfolio.skill",
+  "pk": 4,
+  "fields": {
+    "name": "Marketing Strategy",
+    "level": "Advanced",
+    "category": "Digital Marketing"
+  }
+},
+{
+  "model": "portfolio.skill",
+  "pk": 5,
+  "fields": {
+    "name": "Team Leadership",
+    "level": "Advanced",
+    "category": "Leadership"
+  }
+},
+{
+  "model": "portfolio.skill",
+  "pk": 6,
+  "fields": {
+    "name": "Financial Management",
+    "level": "Expert",
+    "category": "Leadership"
+  }
+},
+{
+  "model": "portfolio.skill",
+  "pk": 7,
+  "fields": {
+    "name": "Customer Service",
+    "level": "Expert",
+    "category": "Soft Skills"
+  }
+},
+{
+  "model": "portfolio.skill",
+  "pk": 8,
+  "fields": {
+    "name": "Business Communication",
+    "level": "Advanced",
+    "category": "Soft Skills"
+  }
+},
+{
+  "model": "portfolio.skill",
+  "pk": 9,
+  "fields": {
+    "name": "Project Management",
+    "level": "Advanced",
+    "category": "Leadership"
+  }
+},
+{
+  "model": "portfolio.skill",
+  "pk": 10,
+  "fields": {
+    "name": "Account Management",
+    "level": "Advanced",
+    "category": "Data Management"
+  }
+},
+{
+  "model": "portfolio.skill",
+  "pk": 11,
+  "fields": {
+    "name": "Content Planning",
+    "level": "Advanced",
+    "category": "Digital Marketing"
+  }
+},
+{
+  "model": "portfolio.project",
+  "pk": 1,
+  "fields": {
+    "title": "Chatbot Project",
+    "short_description": "An AI chatbot built with Chatbase that answers student questions about course policies, assignments, and deadlines by referencing uploaded class syllabi.",
+    "description": "One-Sentence Summary:\nAI chatbot using Chatbase.co to answer basic class questions by referencing course syllabi and course timelines.\n\nBusiness Problem:\nStudents often spend extra time searching through syllabi, timelines, and course documents to find simple answers about assignments, deadlines, policies, or class expectations. This chatbot helps make that process faster by giving students a quick place to ask course-related questions.\n\nTools Used:\nChatbase, AI chatbot builder, uploaded syllabus/course timeline files, prompt engineering, role instructions, chatbot guardrails\n\nKey Features:\nAnswers basic questions about classes using uploaded course materials\nUses a casual, college-student-friendly tone\nGives simple and direct answers unless more detail is needed\nAsks clarifying questions when the user's question is unclear\nUses guardrails to avoid making up answers\nRedirects users back to course-related topics if they ask unrelated questions\n\nMy Role / Contribution:\nI designed the purpose of the chatbot, identified the course documents needed for training, uploaded syllabus and timeline materials, customized the chatbot's role, adjusted its tone, set guardrails, and tested the chatbot to make sure it answered questions clearly and accurately.\n\nBiggest Challenge:\nThe biggest challenge was making sure the chatbot only answered based on the information provided in the syllabus or course timeline. I had to think carefully about the chatbot's guardrails so it would not make up answers when the information was not available.\n\nWhat You Learned:\nI learned how to build and train an AI chatbot using uploaded files, how role instructions affect the chatbot's tone, and how constraints help keep the chatbot focused and accurate. I also learned that a chatbot is more useful when it has clear training materials, a specific purpose, and strong guardrails.\n\nDemo Link: Not publicly available",
+    "category": "AI / NLP",
+    "technologies": "Chatbase, AI chatbot builder, Uploaded syllabus/course timeline files, Prompt engineering, Role instructions, Chatbot guardrails",
+    "business_problem": "Students waste time digging through long syllabi and course documents to find simple answers about deadlines, assignments, and class policies. This chatbot gives them a fast and accurate way to ask those questions directly, reducing frustration and saving time during busy parts of the semester.",
+    "key_features": "Intent classification, context-aware responses, conversation history tracking, Chatbase integration",
+    "role": "Sole developer. I designed the chatbot's purpose and intent schema based on course syllabi and timelines, configured the Chatbase model including its role, tone, and guardrails, uploaded the course documents for training, and tested the chatbot to make sure it answered questions clearly and accurately.",
+    "challenges": "The biggest challenge was handling ambiguous or open-ended questions without the chatbot generating inaccurate answers or pulling information from the wrong syllabus when the student's question was not specific enough. Getting the guardrails tight enough to prevent hallucinations while still being helpful required careful testing and prompt refinement.",
+    "lessons_learned": "I learned that the quality of a chatbot's answers depends heavily on how well the training documents are organized and how specific the guardrails are. I also learned that prompt engineering and role configuration directly affect how the chatbot handles edge cases like vague or off-topic questions. Testing with real student-style questions taught me how to identify gaps in the chatbot's knowledge and tighten its responses without making it too restrictive.",
+    "image": "",
+    "static_image": "images/chatbot_screenshot.png",
+    "screenshot_caption": "Chatbot Demo",
+    "github_url": "",
+    "live_url": "",
+    "created_at": "2026-05-06T02:11:33.889Z",
+    "updated_at": "2026-05-08T03:13:24.495Z",
+    "order": 100
+  }
+},
+{
+  "model": "portfolio.project",
+  "pk": 2,
+  "fields": {
+    "title": "n8n Agent Workflow Project",
+    "short_description": "A multi-agent automation system built in n8n that handles the full intake, pricing, scheduling, and communication workflow for a handyman business.",
+    "description": "Designed and deployed an event-driven automation pipeline using n8n. The workflow listens for webhook triggers, applies conditional logic, and pushes data to multiple external services without manual intervention.",
+    "category": "Automation",
+    "technologies": "n8n, Google Sheets, Webhooks, HTTP Requests, JavaScript, Google Gemini (Message a Model), Gmail",
+    "business_problem": "Small handyman businesses spend a lot of time manually responding to new job requests, calculating prices, scheduling appointments, and following up with customers. This workflow automates that entire process from the moment a new job is added to a Google Sheet all the way through sending a confirmation email to the customer.",
+    "key_features": "Triggers automatically when a new row is added to Google Sheets, Normalizes and prepares the job data before passing it to agents, Calls a separate Intake Agent to process and store job details, Calls a Pricing Agent to calculate and store job cost, Calls a Scheduling Agent to find and store an available time, Calls a Communications Agent to prepare the customer message, Sends a confirmation email to the customer automatically through Gmail",
+    "role": "Sole developer. I designed and built the full multi-agent workflow in n8n, connected the Google Sheets trigger, built each individual sub-agent using webhooks and Gemini, wrote the JavaScript code nodes to parse and format data between agents, and configured the Gmail node to send the final customer confirmation message.",
+    "challenges": "The biggest challenge was getting each agent to pass data cleanly to the next one. Each sub-agent receives a webhook POST, processes it, and responds back, so I had to make sure the data format stayed consistent across all four agents and that each one stored its output correctly before the next agent was called.",
+    "lessons_learned": "I learned how to break a complex business process into smaller specialized agents and connect them in sequence. I also learned how to use webhooks as the communication layer between agents in n8n, how to write JavaScript code nodes to transform data, and how to integrate an AI model into an automation workflow using the Message a Model node.",
+    "image": "",
+    "static_image": "",
+    "screenshot_caption": "",
+    "github_url": "",
+    "live_url": "",
+    "created_at": "2026-05-06T20:22:22.568Z",
+    "updated_at": "2026-05-08T03:13:56.955Z",
+    "order": 5
+  }
+},
+{
+  "model": "portfolio.project",
+  "pk": 3,
+  "fields": {
+    "title": "LangChain Agent Project",
+    "short_description": "A conversational LangChain agent built for a handyman business that takes a customer service request, calculates a price using a custom tool, schedules an appointment, and creates a Google Calendar event automatically.",
+    "description": "Built a ReAct-style agent using LangChain and the OpenAI API. The agent decides which tool to call, retrieves information, and synthesizes a final answer in a single conversation loop.",
+    "category": "AI / ML",
+    "technologies": "LangChain, Python, Custom Pricing Tool, Custom Scheduling Tool, Google Calendar API, Terminal",
+    "business_problem": "Handyman businesses lose time going back and forth with customers to figure out pricing and scheduling. This agent handles the full conversation in one flow, from understanding the job request to booking the appointment and creating the calendar event, without any manual steps.",
+    "key_features": "Accepts a natural language service request from the customer in the terminal\nCalls a custom pricing tool to classify the job type urgency and complexity and return an estimated price\nShows the full agent trace so you can see exactly which tools were called and what they returned\nAsks the customer if they want to schedule an appointment after showing the price\nCollects the customer name and books the appointment\nCreates a real Google Calendar event with the customer name service type and time\nReturns a confirmation message with a direct link to the calendar event",
+    "role": "Sole developer. I built the full LangChain agent in Python, wrote the custom pricing and scheduling tools, connected the agent to the Google Calendar API, and designed the conversation flow from pricing to booking to confirmation.",
+    "challenges": "The biggest challenge was getting the agent to call the right tool at the right step in the conversation. I had to write clear tool descriptions and read the agent trace carefully to make sure it called the pricing tool before the scheduling tool and passed the correct data between each step.",
+    "lessons_learned": "I learned how to build a LangChain agent with custom tools, how to read and use the agent trace to debug tool calls, and how to connect a Python application to the Google Calendar API to create real events automatically from agent output.",
+    "image": "",
+    "static_image": "",
+    "screenshot_caption": "",
+    "github_url": "https://github.com/Samanthabruner/LangChain_Agent.git",
+    "live_url": "",
+    "created_at": "2026-05-06T20:22:22.574Z",
+    "updated_at": "2026-05-08T03:13:24.526Z",
+    "order": 4
+  }
+},
+{
+  "model": "portfolio.project",
+  "pk": 4,
+  "fields": {
+    "title": "Google AI Studio Media Project",
+    "short_description": "A media and branding project using Google AI Studio's Gemini model to generate AI images, social media content, and promotional materials for a fictional health-tech startup called AuraGlass.",
+    "description": "Integrated Google AI Studio's Gemini API to build a Python app that accepts image inputs and returns structured natural-language analysis, focused on multimodal prompting strategies.",
+    "category": "Generative AI",
+    "technologies": "Google AI Studio, Gemini, Google Veo, AI image generation, Prompt engineering",
+    "business_problem": "Startups need professional branding, marketing visuals, and social media content but hiring designers and agencies is expensive and slow. This project shows how AI image and content generation tools can produce high-quality branded media fast and at no cost.",
+    "key_features": "Built structured AI prompts using context, objective, style, tone, audience, and response format\nGenerated a complete brand identity including a company logo and branded merchandise\nCreated a social media post and promotional video thumbnail using Google Veo\nCompiled all outputs into a professional pitch deck and presented to the class",
+    "role": "Within 45 minutes my team and I worked together to write the prompts used to generate the AuraGlass branding and media assets, designed the structure of each prompt using the context, objective, style, tone, audience, and response format, selected and organized the outputs into a slide deck, and presented the project to the class as a group. I specifically created our company logo and the designs for t-shirts, mugs, backpacks, and other branded merchandise.",
+    "challenges": "The biggest challenge was writing prompts specific enough to get consistent branding across all the generated assets. We also tried to generate images of our actual team by submitting our photos to the AI, but the results placed people who looked nothing like us around the product. Getting AI image generation to accurately represent real, specific people proved much harder than generating fictional characters or branded visuals.",
+    "lessons_learned": "I learned how to write structured AI prompts that produce consistent and professional results across multiple asset types. I also learned that AI image generation works well for fictional concepts and branded visuals but struggles significantly when you try to represent real specific people accurately. Working within a 45 minute time constraint taught me how to prioritize which assets mattered most and how to divide tasks quickly within a team.",
+    "image": "",
+    "static_image": "",
+    "screenshot_caption": "",
+    "github_url": "",
+    "live_url": "",
+    "created_at": "2026-05-06T20:22:22.583Z",
+    "updated_at": "2026-05-08T03:02:37.710Z",
+    "order": 3
+  }
+},
+{
+  "model": "portfolio.project",
+  "pk": 5,
+  "fields": {
+    "title": "Machine Learning Project (scikit-learn)",
+    "short_description": "A supervised machine learning project using scikit-learn to build a linear regression model on the Diabetes dataset and visualize the relationship between blood sugar levels and disease progression.",
+    "description": "Built an end-to-end ML pipeline on a structured dataset covering EDA, feature engineering, model selection, hyperparameter tuning, and performance visualization.",
+    "category": "Machine Learning",
+    "technologies": "Python, Scikit-learn, Matplotlib, Numpy, LinearRegression, Scikit-learn Diabetes Dataset",
+    "business_problem": "Understanding what factors most affect disease progression in diabetes patients is valuable for medical research and treatment planning. This project uses the scikit-learn Diabetes dataset to build a linear regression model that predicts disease progression based on patient measurements, showing how machine learning can turn raw medical data into useful predictions.",
+    "key_features": "Explored the Diabetes dataset structure including 442 samples and 10 features\nIdentified the s6 blood sugar feature as the key predictor variable\nTrained a linear regression model and printed the coefficient and intercept\nProduced a scatterplot with a regression line showing the relationship between blood sugar and disease progression",
+    "role": "Sole developer. I wrote the full Python script to load the dataset, explore its structure, train a linear regression model, evaluate the output, and produce a scatterplot visualization with a regression line.",
+    "challenges": "The biggest challenge was understanding what each feature in the dataset represented and deciding which feature to use for the regression model. I also had to troubleshoot getting matplotlib to display the scatterplot correctly in VS Code.",
+    "lessons_learned": "I learned how to load and explore a built in scikit-learn dataset, how to train a linear regression model, how to interpret the coefficient and intercept, and how to create a scatterplot with a regression line using matplotlib. I also learned how to troubleshoot matplotlib display issues in VS Code and how to interpret what model outputs like coefficients and intercepts mean in a real world context.",
+    "image": "",
+    "static_image": "",
+    "screenshot_caption": "",
+    "github_url": "https://github.com/Samanthabruner/machinelearning_samantha_bruner.git",
+    "live_url": "",
+    "created_at": "2026-05-06T20:22:22.588Z",
+    "updated_at": "2026-05-08T03:17:04.068Z",
+    "order": 2
+  }
+},
+{
+  "model": "portfolio.project",
+  "pk": 6,
+  "fields": {
+    "title": "Campus SkillSwap Django Project",
+    "short_description": "A full-stack Django web app where college students connect with each other by listing skills they offer and browsing what others are sharing.",
+    "description": "Designed and built a peer skill-exchange platform for a university campus. Students create profiles, list skills, and send swap requests. The app handles the full request lifecycle with a clean Bootstrap UI.",
+    "category": "Web Development",
+    "technologies": "Django, Python, SQLite, Bootstrap, HTML, CSS, Django Authentication System, Render",
+    "business_problem": "College students have valuable skills to share but no easy way to find peers to trade knowledge with. Students who are good at Excel need help with guitar, students who know Python want to learn Spanish, but there is no platform built specifically for campus skill trading. Campus SkillSwap gives students a place to post what they can teach, browse what others offer, and connect directly for a swap.",
+    "key_features": "User registration and login using Django built in authentication\nPost skills you can teach with a title and description\nBrowse all skills listed by other students\nSend skill swap requests to other students\nAccept or decline incoming swap requests\nManage your own profile and skill listings",
+    "role": "Sole developer. I built the entire application from scratch including the database models, views, URL routing, HTML templates, and user authentication. I designed the skill listing and swap request system, connected all the pages together, styled the site using Bootstrap, and deployed it as a live web app on Render.",
+    "challenges": "The biggest challenge was building the swap request system so that students could send requests to each other and both users could see the status of each request without the data getting mixed up between different user accounts.",
+    "lessons_learned": "I learned how to build a full Django web application from scratch, how to use Django authentication system for user login and registration, how to create and manage relationships between database models, and how to handle user-specific data in views and templates. Building a project that real students could actually use made me think carefully about user experience and data privacy in a way that purely academic exercises do not.",
+    "image": "",
+    "static_image": "",
+    "screenshot_caption": "",
+    "github_url": "https://github.com/Samanthabruner/campus_skillswap_samantha_bruner.git",
+    "live_url": "https://campus-skillswap-samantha-bruner.onrender.com/",
+    "created_at": "2026-05-06T20:22:22.596Z",
+    "updated_at": "2026-05-08T03:21:37.520Z",
+    "order": 1
+  }
+}
+]
