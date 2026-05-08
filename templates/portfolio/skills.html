@@ -7,27 +7,15 @@
     <div class="container">
         <div class="page-header">
             <h1>Skills</h1>
-            <p class="subtitle">Technical expertise and proficiencies</p>
+            <p class="subtitle">Areas of expertise across technology, business, and marketing.</p>
         </div>
 
         {% if skills %}
-        <div class="skills-by-category">
-            {% regroup skills by category as skills_by_cat %}
-            {% for cat in skills_by_cat %}
-            <div class="skill-category">
-                <h2>{{ cat.grouper }}</h2>
-                <div class="skills-list">
-                    {% for skill in cat.list %}
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <h3>{{ skill.name }}</h3>
-                            <span class="skill-level badge badge-{{ skill.level|lower }}">{{ skill.get_level_display }}</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: {% if skill.level == 'Beginner' %}25%{% elif skill.level == 'Intermediate' %}50%{% elif skill.level == 'Advanced' %}75%{% else %}100%{% endif %}"></div>
-                        </div>
-                    </div>
-                    {% endfor %}
+        <div class="row row-cols-2 row-cols-md-4 g-3">
+            {% for skill in skills %}
+            <div class="col">
+                <div class="skill-item text-center">
+                    <h4>{{ skill.name }}</h4>
                 </div>
             </div>
             {% endfor %}
