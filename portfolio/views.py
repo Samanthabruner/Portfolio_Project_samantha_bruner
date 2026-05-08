@@ -78,7 +78,7 @@ def contact(request):
                 settings.DEFAULT_FROM_EMAIL,
                 [settings.DEFAULT_FROM_EMAIL],
             )
-            return JsonResponse({'success': True, 'message': 'Message sent successfully!'})
+            return JsonResponse({'success': True, 'message': 'Thank you for reaching out. I will get back to you soon.'})
         except Exception as e:
             return JsonResponse({'success': False, 'error': str(e)})
     
