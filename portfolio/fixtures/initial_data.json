@@ -72,6 +72,42 @@
   }
 },
 {
+  "model": "portfolio.skill",
+  "pk": 13,
+  "fields": {
+    "name": "Python",
+    "level": "Advanced",
+    "category": "Technology"
+  }
+},
+{
+  "model": "portfolio.skill",
+  "pk": 14,
+  "fields": {
+    "name": "Django",
+    "level": "Advanced",
+    "category": "Technology"
+  }
+},
+{
+  "model": "portfolio.skill",
+  "pk": 15,
+  "fields": {
+    "name": "AI Prompt Engineering",
+    "level": "Advanced",
+    "category": "Technology"
+  }
+},
+{
+  "model": "portfolio.skill",
+  "pk": 16,
+  "fields": {
+    "name": "Client Relations",
+    "level": "Advanced",
+    "category": "Soft Skills"
+  }
+},
+{
   "model": "portfolio.project",
   "pk": 1,
   "fields": {
