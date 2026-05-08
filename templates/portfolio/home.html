@@ -1,0 +1,60 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+
+{% block title %}Home - Portfolio{% endblock %}
+
+{% block content %}
+<section class="hero container">
+    <div class="hero-centered">
+        <div class="hero-photo">
+            <img src="{% static 'images/profile.jpg' %}" alt="Samantha Bruner">
+        </div>
+        <div class="hero-text">
+            <h1>Samantha Bruner</h1>
+            <p class="lead">Hi, I'm Samantha Bruner, a soon-to-be Baylor graduate studying Management Information Systems and Marketing. My background includes technology, insurance, marketing, finance, and leadership, and I will begin my career at Lockton as a Complex Claims Coordinator in June.</p>
+        </div>
+    </div>
+</section>
+
+<section class="featured-projects">
+    <div class="container">
+        <h2>Featured Projects</h2>
+        {% if featured_projects %}
+        <div class="projects-grid">
+            {% for project in featured_projects %}
+            <div class="project-card">
+                <div class="project-content project-preview-only">
+                    <h3><a href="{% url 'portfolio:project_detail' project.id %}?next=home" class="link">{{ project.title }}</a></h3>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="empty-state">Projects coming soon.</p>
+        {% endif %}
+    </div>
+</section>
+
+<section class="featured-skills">
+    <div class="container">
+        <h2>Key Skills</h2>
+        <div class="skills-grid">
+            {% for skill in skills %}
+            <div class="skill-item">
+                <h4>{{ skill.name }}</h4>
+                <p class="skill-level">{{ skill.get_level_display }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <div class="container">
+        <h2>Ready to work together?</h2>
+        <p>Let's discuss your project or opportunity</p>
+        <a href="{% url 'portfolio:contact' %}" class="btn btn-primary">Contact Me</a>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,535 @@
+{% extends "portfolio/base.html" %}
+{% load static portfolio_extras %}
+
+{% block title %}{{ project.title }} - Portfolio{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container" style="max-width:800px;">
+
+        <a href="#" onclick="history.back(); return false;"
+           class="text-decoration-none d-inline-flex align-items-center mb-4"
+           style="color:#6c63ff; font-size:0.9rem; font-weight:500;">
+            &larr; Back
+        </a>
+
+        <!-- Title -->
+        <div class="mb-2">
+            {% if project.category %}
+            <span class="detail-label">{{ project.category }}</span>
+            {% endif %}
+            <h1 style="font-size:2rem; font-weight:700; line-height:1.25; margin:0.4rem 0 0;">
+                {{ project.title }}
+            </h1>
+        </div>
+
+        <div class="project-sections">
+
+            <!-- 1. One-Sentence Summary -->
+            {% if project.short_description %}
+            <div class="detail-section">
+                <span class="detail-label">One-Sentence Summary</span>
+                <p>{{ project.short_description }}</p>
+            </div>
+            {% endif %}
+
+            <!-- 2. Campus SkillSwap: live buttons + iframe preview -->
+            {% if project.title == "Campus SkillSwap Django Project" %}
+            <div class="detail-section" style="border-bottom:1px solid #f0f0f0;">
+                <div class="d-flex gap-2 flex-wrap mb-3">
+                    <a href="{{ project.live_url }}" target="_blank" rel="noopener"
+                       style="display:inline-flex; align-items:center; gap:0.4rem; font-size:0.875rem; font-weight:500; color:#fff; text-decoration:none; background:#6c63ff; border-radius:6px; padding:0.35rem 0.85rem;">
+                        &#127758; View Live Site
+                    </a>
+                    <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="github-btn">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                        View on GitHub
+                    </a>
+                </div>
+                <img src="{% static 'images/campushome.png' %}" alt="Campus SkillSwap Home Page"
+                     style="width:100%; border-radius:8px; border:1px solid #e0e0e0;">
+            </div>
+            {% endif %}
+
+            <!-- 2. GitHub link (generic — not shown for projects with a custom links block above) -->
+            {% if project.github_url and project.title != "Campus SkillSwap Django Project" %}
+            <div class="detail-section" style="padding:0.75rem 0; border-bottom:1px solid #f0f0f0;">
+                <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="github-btn">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            {% endif %}
+
+            <!-- 3. Screenshots & Visuals -->
+            {% if project.image or project.static_image or project.title == "n8n Agent Workflow Project" or project.title == "LangChain Agent Project" or project.title == "Google AI Studio Media Project" or project.title == "Machine Learning Project (scikit-learn)" %}
+            <div class="detail-section">
+                <span class="detail-label">Screenshots &amp; Visuals</span>
+
+                {% if project.image %}
+                <div class="visual-block">
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}"
+                         class="img-fluid w-100" style="border-radius:6px;">
+                </div>
+                {% endif %}
+
+                {% if project.static_image %}
+                <div class="visual-block text-center">
+                    <img src="{% static project.static_image %}"
+                         alt="{{ project.screenshot_caption|default:project.title }}"
+                         class="img-fluid"
+                         style="max-width:400px; width:100%; border-radius:6px;">
+                    {% if project.screenshot_caption %}
+                    <p class="visual-caption">{{ project.screenshot_caption }}</p>
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                {% if project.title == "n8n Agent Workflow Project" %}
+                <div class="workflow-diagrams">
+                    <div class="workflow-diagram-block">
+                        <p class="workflow-diagram-label">Orchestrator Workflow</p>
+                        <img src="{% static 'images/Handyman_orchestrator.jpg' %}" alt="Orchestrator Workflow" class="img-fluid workflow-diagram-img">
+                    </div>
+                    <div class="workflow-diagram-block">
+                        <p class="workflow-diagram-label">Scheduling Agent</p>
+                        <img src="{% static 'images/Agent_scheduling.jpg' %}" alt="Scheduling Agent" class="img-fluid workflow-diagram-img">
+                    </div>
+                    <div class="workflow-diagram-block">
+                        <p class="workflow-diagram-label">Pricing Agent</p>
+                        <img src="{% static 'images/Agent_pricing.jpg' %}" alt="Pricing Agent" class="img-fluid workflow-diagram-img">
+                    </div>
+                    <div class="workflow-diagram-block">
+                        <p class="workflow-diagram-label">Communications Agent</p>
+                        <img src="{% static 'images/Agent_comms.jpeg' %}" alt="Communications Agent" class="img-fluid workflow-diagram-img">
+                    </div>
+                    <div class="workflow-diagram-block">
+                        <p class="workflow-diagram-label">Intake Agent</p>
+                        <img src="{% static 'images/Agent_Intake.jpeg' %}" alt="Intake Agent" class="img-fluid workflow-diagram-img">
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if project.title == "LangChain Agent Project" %}
+                <div class="workflow-diagrams">
+                    <div class="workflow-diagram-block">
+                        <p class="workflow-diagram-label">Customer Request</p>
+                        <img src="{% static 'images/User_Input.png' %}" alt="Customer Request" class="img-fluid workflow-diagram-img">
+                    </div>
+                    <div class="workflow-diagram-block">
+                        <p class="workflow-diagram-label">Pricing Tool Output</p>
+                        <img src="{% static 'images/User_Pricing_2.png' %}" alt="Pricing Tool Output" class="img-fluid workflow-diagram-img">
+                    </div>
+                    <div class="workflow-diagram-block">
+                        <p class="workflow-diagram-label">User Scheduling</p>
+                        <img src="{% static 'images/User_Scheduling.png' %}" alt="User Scheduling" class="img-fluid workflow-diagram-img">
+                    </div>
+                    <div class="workflow-diagram-block">
+                        <p class="workflow-diagram-label">Name Collection</p>
+                        <img src="{% static 'images/User_Name_Confirmation.png' %}" alt="Name Collection" class="img-fluid workflow-diagram-img">
+                    </div>
+                    <div class="workflow-diagram-block">
+                        <p class="workflow-diagram-label">Appointment Confirmation</p>
+                        <img src="{% static 'images/Appointment_Confirmation_2.png' %}" alt="Appointment Confirmation" class="img-fluid workflow-diagram-img">
+                    </div>
+                    <div class="workflow-diagram-block">
+                        <p class="workflow-diagram-label">Google Calendar Event</p>
+                        <img src="{% static 'images/Calendar_Confirmation.png' %}" alt="Google Calendar Event" class="img-fluid workflow-diagram-img">
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if project.title == "Google AI Studio Media Project" %}
+                <div class="workflow-diagram-block">
+                    <iframe src="https://drive.google.com/file/d/1engH5Wpe8P17qBJM8eF6EV1LVOGTlWL8/preview"
+                            width="100%" height="600px" allow="autoplay"
+                            style="border:none; border-radius:8px; display:block;"></iframe>
+                </div>
+                {% endif %}
+
+                {% if project.title == "Machine Learning Project (scikit-learn)" %}
+
+                <!-- GROUP 1: Diabetes Dataset -->
+                <span class="detail-label">Diabetes Dataset</span>
+                <img src="{% static 'images/diabetes_figure.png' %}" alt="Blood Sugar vs Disease Progression"
+                     class="img-fluid" style="width:100%; border:1px solid #e4e4e4; border-radius:6px; display:block;">
+                <p class="ml-grid-label">Blood Sugar vs Disease Progression</p>
+
+                <hr style="border-color:#d0d0d0; margin:1.5rem 0;">
+
+                <!-- GROUP 2: Digit Recognition -->
+                <span class="detail-label">Machine Learning 1 - Digit Recognition Dataset</span>
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <img src="{% static 'images/ml1_figure2.png' %}" alt="Sample Digit Images"
+                             class="img-fluid" style="width:100%; border:1px solid #e4e4e4; border-radius:6px;">
+                        <p class="ml-grid-label">Sample Digit Images</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{% static 'images/ml1_figure.png' %}" alt="Digit Confusion Matrix"
+                             class="img-fluid" style="width:100%; border:1px solid #e4e4e4; border-radius:6px;">
+                        <p class="ml-grid-label">Digit Confusion Matrix</p>
+                    </div>
+                </div>
+
+                <hr style="border-color:#d0d0d0; margin:1.5rem 0;">
+
+                <!-- GROUP 3: Iris Dataset -->
+                <span class="detail-label">Iris Dataset</span>
+                <img src="{% static 'images/iris_figure.png' %}" alt="Iris Species Confusion Matrix"
+                     class="img-fluid" style="width:100%; border:1px solid #e4e4e4; border-radius:6px; display:block;">
+                <p class="ml-grid-label">Iris Species Confusion Matrix</p>
+
+                <hr style="border-color:#d0d0d0; margin:1.5rem 0;">
+
+                <!-- GROUP 4: MPG Analysis -->
+                <span class="detail-label">MPG Analysis Dataset</span>
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <img src="{% static 'images/mpgf_figure.png' %}" alt="Weight vs MPG"
+                             class="img-fluid" style="width:100%; border:1px solid #e4e4e4; border-radius:6px;">
+                        <p class="ml-grid-label">Weight vs MPG</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{% static 'images/mpg_figure2.png' %}" alt="Actual vs Predicted MPG"
+                             class="img-fluid" style="width:100%; border:1px solid #e4e4e4; border-radius:6px;">
+                        <p class="ml-grid-label">Actual vs Predicted MPG</p>
+                    </div>
+                </div>
+
+                <hr style="border-color:#d0d0d0; margin:1.5rem 0;">
+
+                <!-- GROUP 5: California Housing Dataset (3x3 lightbox grid) -->
+                <span class="detail-label">Machine Learning 2 - California Housing Dataset</span>
+                <div class="row g-2">
+                    <div class="col-md-4">
+                        <img src="{% static 'images/ml2_medinc1.png' %}" alt="MedInc vs House Value"
+                             class="img-fluid lb-img" style="width:100%; border:1px solid #e4e4e4; border-radius:6px; cursor:pointer;">
+                        <p class="ml-grid-label">MedInc vs House Value</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{% static 'images/ml2_houseage2.png' %}" alt="House Age vs House Value"
+                             class="img-fluid lb-img" style="width:100%; border:1px solid #e4e4e4; border-radius:6px; cursor:pointer;">
+                        <p class="ml-grid-label">House Age vs House Value</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{% static 'images/ml2_averooms3.png' %}" alt="Ave Rooms vs House Value"
+                             class="img-fluid lb-img" style="width:100%; border:1px solid #e4e4e4; border-radius:6px; cursor:pointer;">
+                        <p class="ml-grid-label">Ave Rooms vs House Value</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{% static 'images/ml2_avebedrms4.png' %}" alt="Ave Bedrooms vs House Value"
+                             class="img-fluid lb-img" style="width:100%; border:1px solid #e4e4e4; border-radius:6px; cursor:pointer;">
+                        <p class="ml-grid-label">Ave Bedrooms vs House Value</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{% static 'images/ml2_population5.png' %}" alt="Population vs House Value"
+                             class="img-fluid lb-img" style="width:100%; border:1px solid #e4e4e4; border-radius:6px; cursor:pointer;">
+                        <p class="ml-grid-label">Population vs House Value</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{% static 'images/ml2_aceoccup.png' %}" alt="Ave Occupancy vs House Value"
+                             class="img-fluid lb-img" style="width:100%; border:1px solid #e4e4e4; border-radius:6px; cursor:pointer;">
+                        <p class="ml-grid-label">Ave Occupancy vs House Value</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{% static 'images/ml2_latitude7.png' %}" alt="Latitude vs House Value"
+                             class="img-fluid lb-img" style="width:100%; border:1px solid #e4e4e4; border-radius:6px; cursor:pointer;">
+                        <p class="ml-grid-label">Latitude vs House Value</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{% static 'images/ml2_longitude8.png' %}" alt="Longitude vs House Value"
+                             class="img-fluid lb-img" style="width:100%; border:1px solid #e4e4e4; border-radius:6px; cursor:pointer;">
+                        <p class="ml-grid-label">Longitude vs House Value</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{% static 'images/ml2_predictedexpected9.png' %}" alt="Predicted vs Expected"
+                             class="img-fluid lb-img" style="width:100%; border:1px solid #e4e4e4; border-radius:6px; cursor:pointer;">
+                        <p class="ml-grid-label">Predicted vs Expected</p>
+                    </div>
+                </div>
+                <p style="font-size:0.8rem; color:#aaa; font-style:italic; margin-top:0.5rem;">Click any image to enlarge</p>
+
+                {% endif %}
+
+            </div>
+            {% endif %}
+
+            <!-- 3. Business Problem -->
+            {% if project.business_problem %}
+            <div class="detail-section">
+                <span class="detail-label">Business Problem</span>
+                <p>{{ project.business_problem }}</p>
+            </div>
+            {% endif %}
+
+            <!-- 4. Tools Used -->
+            {% if project.technologies %}
+            <div class="detail-section">
+                <span class="detail-label">Tools Used</span>
+                <div class="tag-row">
+                    {% for tech in project.technology_list %}
+                    <span class="tech-tag">{{ tech }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- 5. Key Features -->
+            {% if project.key_features %}
+            <div class="detail-section">
+                <span class="detail-label">Key Features</span>
+                <ul class="feature-list">
+                    {% for feature in project.key_features|split_commas %}
+                    <li>{{ feature }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <!-- 6. My Role / Contribution -->
+            {% if project.role %}
+            <div class="detail-section">
+                <span class="detail-label">My Role / Contribution</span>
+                <p>{{ project.role }}</p>
+            </div>
+            {% endif %}
+
+            <!-- 7. Biggest Challenge -->
+            {% if project.challenges %}
+            <div class="detail-section">
+                <span class="detail-label">Biggest Challenge</span>
+                <p>{{ project.challenges }}</p>
+            </div>
+            {% endif %}
+
+            <!-- 8. What I Learned -->
+            {% if project.lessons_learned %}
+            <div class="detail-section">
+                <span class="detail-label">What I Learned</span>
+                <p>{{ project.lessons_learned }}</p>
+            </div>
+            {% endif %}
+
+        </div>
+
+        <!-- Related projects -->
+        {% if related_projects %}
+        <hr style="border-color:#ebebeb; margin-top:3rem;" class="mb-4">
+        <h5 class="fw-semibold mb-4">Other Projects</h5>
+        <div class="row row-cols-1 row-cols-md-3 g-3">
+            {% for related in related_projects %}
+            <div class="col">
+                <a href="{% url 'portfolio:project_detail' related.id %}?next=projects" class="text-decoration-none">
+                    <div class="card h-100 border-0 shadow-sm"
+                         style="border-radius:10px; overflow:hidden; transition:transform .15s;">
+                        {% if related.image %}
+                        <img src="{{ related.image.url }}" class="card-img-top" alt="{{ related.title }}"
+                             style="height:120px; object-fit:cover;">
+                        {% endif %}
+                        <div class="card-body py-3">
+                            <h6 class="card-title text-dark fw-semibold mb-1"
+                                style="font-size:0.9rem;">{{ related.title }}</h6>
+                            <p class="card-text text-muted"
+                               style="font-size:0.8rem;">{{ related.short_description|truncatechars:80 }}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+
+<style>
+.detail-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 0.5rem;
+}
+
+.project-sections {
+    margin-top: 2rem;
+}
+
+.detail-section {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-section p {
+    color: #333;
+    font-size: 0.975rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.github-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #1a1a1a;
+    text-decoration: none;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    padding: 0.35rem 0.85rem;
+}
+
+.github-btn:hover {
+    background: #f5f5f5;
+    color: #1a1a1a;
+}
+
+.tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.tech-tag {
+    display: inline-block;
+    background: #ede9fe;
+    color: #5b21b6;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+}
+
+.feature-list {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: #333;
+    font-size: 0.975rem;
+    line-height: 1.7;
+}
+
+.feature-list li {
+    margin-bottom: 0.3rem;
+}
+
+.feature-list li:last-child {
+    margin-bottom: 0;
+}
+
+.visual-block {
+    margin-bottom: 1.25rem;
+}
+
+.visual-block:last-child {
+    margin-bottom: 0;
+}
+
+.visual-caption {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    font-size: 0.85rem;
+    color: #999;
+}
+
+.workflow-diagrams {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.workflow-diagram-block {
+    border: 1px solid #e4e4e4;
+    border-radius: 8px;
+    padding: 1rem;
+    background: #fafafa;
+}
+
+.workflow-diagram-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 0.75rem;
+}
+
+.workflow-diagram-img {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+}
+
+.ml-grid-label {
+    font-size: 0.75rem;
+    color: #999;
+    text-align: center;
+    margin: 0.35rem 0 0;
+}
+
+/* Lightbox */
+#lb-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+#lb-overlay.lb-active {
+    display: flex;
+}
+#lb-img-full {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 6px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    cursor: default;
+}
+#lb-close {
+    position: fixed;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2.25rem;
+    line-height: 1;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    padding: 0;
+}
+#lb-close:hover { opacity: 1; }
+.lb-img:hover { opacity: 0.85; transition: opacity 0.15s; }
+</style>
+
+<!-- Lightbox overlay -->
+<div id="lb-overlay" onclick="lbClose()">
+    <button id="lb-close" onclick="lbClose()" aria-label="Close">&times;</button>
+    <img id="lb-img-full" src="" alt="" onclick="event.stopPropagation()">
+</div>
+
+<script>
+document.querySelectorAll('.lb-img').forEach(function(img) {
+    img.addEventListener('click', function() {
+        document.getElementById('lb-img-full').src = this.src;
+        document.getElementById('lb-img-full').alt = this.alt;
+        document.getElementById('lb-overlay').classList.add('lb-active');
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+function lbClose() {
+    document.getElementById('lb-overlay').classList.remove('lb-active');
+    document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') lbClose();
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+
+{% block title %}Projects - Portfolio{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="mb-5">
+            <h1 class="mb-2">My Projects</h1>
+            <p class="text-muted">A selection of projects I've built and shipped</p>
+        </div>
+
+        {% if projects %}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for project in projects %}
+            <div class="col">
+                <a href="{% url 'portfolio:project_detail' project.id %}?next=projects" class="text-decoration-none">
+                    <div class="card h-100 border-0 shadow-sm project-card-hover">
+                        {% if project.image %}
+                        <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}"
+                             style="height:180px; object-fit:cover;">
+                        {% elif project.static_image %}
+                        <img src="{% static project.static_image %}" class="card-img-top" alt="{{ project.title }}"
+                             style="height:180px; object-fit:cover; object-position:top;">
+                        {% elif project.title == "n8n Agent Workflow Project" %}
+                        <img src="{% static 'images/Handyman_orchestrator.jpg' %}" class="card-img-top" alt="{{ project.title }}"
+                             style="height:180px; object-fit:cover;">
+                        {% elif project.title == "LangChain Agent Project" %}
+                        <img src="{% static 'images/User_Pricing_2.png' %}" class="card-img-top" alt="{{ project.title }}"
+                             style="height:180px; object-fit:cover;">
+                        {% elif project.title == "Machine Learning Project (scikit-learn)" %}
+                        <img src="{% static 'images/diabetes_figure.png' %}" class="card-img-top" alt="{{ project.title }}"
+                             style="height:180px; object-fit:cover;">
+                        {% elif project.title == "Campus SkillSwap Django Project" %}
+                        <img src="{% static 'images/campushome.png' %}" class="card-img-top" alt="{{ project.title }}"
+                             style="height:180px; object-fit:cover;">
+                        {% elif project.title == "Google AI Studio Media Project" %}
+                        <img src="{% static 'images/auraglass.png' %}" class="card-img-top" alt="{{ project.title }}"
+                             style="height:180px; object-fit:cover;">
+                        {% else %}
+                        <div class="card-img-top d-flex align-items-center justify-content-center"
+                             style="height:180px; background:#B8E0F0;">
+                            <span style="font-size:2.75rem; line-height:1;">💻</span>
+                        </div>
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title text-dark fw-semibold mb-2">{{ project.title }}</h5>
+                            <p class="card-text text-muted" style="font-size:0.9rem;">{{ project.short_description }}</p>
+                        </div>
+                        <div class="card-footer bg-white border-0 pt-0 pb-3 px-3 d-flex align-items-center justify-content-between">
+                            {% if project.category %}
+                            <span class="badge rounded-pill"
+                                  style="background:#f0f0f0; color:#555; font-weight:500; font-size:0.75rem;">
+                                {{ project.category }}
+                            </span>
+                            {% else %}
+                            <span></span>
+                            {% endif %}
+                            <small style="color:#6c63ff; font-weight:500;">View project &rarr;</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center py-5">
+            <p class="text-muted">No projects added yet.</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<style>
+.project-card-hover {
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    border-radius: 10px !important;
+    overflow: hidden;
+}
+.project-card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.10) !important;
+}
+</style>
+{% endblock %}

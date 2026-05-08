@@ -1,0 +1,19 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+
+{% block title %}Resume - Portfolio{% endblock %}
+
+{% block content %}
+<section class="resume-page resume-simple-page">
+    <div class="container resume-simple-container">
+        <div class="page-header" style="padding-top: 0; padding-bottom: 1rem;">
+            <h1>Resume</h1>
+        </div>
+        <iframe
+            class="resume-simple-frame"
+            src="{% static 'images/resume.pdf' %}#view=FitH"
+            title="Resume PDF">
+        </iframe>
+    </div>
+</section>
+{% endblock %}
